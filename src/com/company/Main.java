@@ -6,14 +6,15 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static com.company.enumConstants.Status.*;
 
-public class Main implements Constants{
+public class Main {
 
 
     public static void main(String[] args) {
 
         // reading files
-        readInput input = new readInput(MATCHFILE, DELIVERIESFILE,SPLITTER);
+        readInput input = new readInput();
         ArrayList<HashMap<String,String>> matchData = input.getMatchData();
         ArrayList<HashMap<String,String>> deliveriesData = input.getDeliveriesData();
 
@@ -25,10 +26,10 @@ public class Main implements Constants{
         Map<String,Integer> matchesWon = solved.matchesWonOfAllTeams(matchData);
 
         //getting matchIds for 2015 and 2016
-        matchIds matchid = new matchIds(matchData,EXTRARUNSYEAR);
-        ArrayList<String> matchIds2016 = matchid.getMatchIds();
+        matchIds matchid2016 = new matchIds(matchData,EXTRA_RUNS_YEAR.value());
+        ArrayList<String> matchIds2016 = matchid2016.getMatchIds();
 
-        matchIds matchid2015 = new matchIds(matchData,ECONOMICBOWLERYEAR);
+        matchIds matchid2015 = new matchIds(matchData,ECONOMIC_BOWLER_YEAR.value());
         ArrayList<String> matchIds2015 = matchid2015.getMatchIds();
 
         //question 3 and 4
@@ -36,10 +37,10 @@ public class Main implements Constants{
         Map<String,Double> economicBowlers = solved.economicBowlers(matchIds2015,deliveriesData);
 
         Map<String,Map<String,? >> finalOut = new LinkedHashMap<String, Map<String, ?>>();
-        finalOut.put(QUESTION1,matchesPlayedPerSeason);
-        finalOut.put(QUESTION2,matchesWon);
-        finalOut.put(QUESTION3,extraRuns);
-        finalOut.put(QUESTION4,economicBowlers);
+        finalOut.put(QUESTION1.value(),matchesPlayedPerSeason);
+        finalOut.put(QUESTION2.value(),matchesWon);
+        finalOut.put(QUESTION3.value(),extraRuns);
+        finalOut.put(QUESTION4.value(),economicBowlers);
 
         scenarioResults result = new scenarioResults(finalOut);
 

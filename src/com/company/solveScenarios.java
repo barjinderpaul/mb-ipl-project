@@ -5,6 +5,7 @@ import java.util.*;
 
 public class solveScenarios {
 
+//    Question 1
     public HashMap<String,Integer> matchesPlayedPerYear(ArrayList<HashMap<String,String>> matchData){
 
         HashMap<String,Integer> totalMatches = new HashMap<String,Integer>();
@@ -21,6 +22,8 @@ public class solveScenarios {
         return totalMatches;
     }
 
+
+//    Question 2
     public HashMap<String,Integer> matchesWonOfAllTeams(ArrayList<HashMap<String,String>> matchData) {
         HashMap<String,Integer> matchesWon = new HashMap<String,Integer>();
 
@@ -40,6 +43,7 @@ public class solveScenarios {
         return matchesWon;
     }
 
+//    Questio 3
     public HashMap<String,Integer> extraRuns(ArrayList<String> matchIds, ArrayList<HashMap<String,String>> matchData){
         HashMap<String,Integer> extraRunsPerTeam = new HashMap<String,Integer>();
         matchData.forEach(map -> {
@@ -60,6 +64,7 @@ public class solveScenarios {
     }
 
 
+//    Question 4
     public HashMap<String,Double> economicBowlers(ArrayList<String> matchIds, ArrayList<HashMap<String,String>> matchData){
         HashMap<String,Integer> economicBowlers = new HashMap<String,Integer>();
 

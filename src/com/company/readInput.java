@@ -5,20 +5,44 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+
+import static com.company.enumConstants.Status.*;
+
 
 public class readInput {
+
     private ArrayList<HashMap<String,String>> matchData = new ArrayList<HashMap<String,String>>();
     private ArrayList<HashMap<String,String>> deliveriesData = new ArrayList<HashMap<String, String>>();
+
     private ArrayList<String> headers = new ArrayList<String>();
     private ArrayList<String> headersDeliveries = new ArrayList<String>();
 
-    public readInput(String matchFile, String deliveriesFile, String splitter){
+    //Constants;
+    private final String matchFile =  MATCH_FILE.value();
+    private final String deliveriesFile = DELIVERIES_FILE.value();
+    private final String splitter = SPLITTER.value();
+
+
+    public readInput(){
+        readCSV();
+    }
+
+
+    public ArrayList<HashMap<String,String>> getMatchData(){
+        return matchData;
+    }
+
+    public ArrayList<HashMap<String,String>> getDeliveriesData(){
+        return deliveriesData;
+    }
+
+
+    public void readCSV() {
         String line = "";
         //reaeding matchesFile
         try (BufferedReader br = new BufferedReader(new FileReader(matchFile))) {
             line = br.readLine();
-           String[] headersLine = line.split(splitter);
+            String[] headersLine = line.split(splitter);
             for (int i = 0; i < headersLine.length; ++i) {
                 headers.add(headersLine[i]);
             }
@@ -58,16 +82,6 @@ public class readInput {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
-    public ArrayList<HashMap<String,String>> getMatchData(){
-        return matchData;
-    }
-    public ArrayList<HashMap<String,String>> getDeliveriesData(){
-        return deliveriesData;
-    }
-
-
 
 }

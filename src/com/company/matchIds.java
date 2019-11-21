@@ -2,10 +2,11 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+
 
 public class matchIds {
     private ArrayList<String> ids = new ArrayList<String>();
+
 
     public matchIds(ArrayList<HashMap<String,String>> matchData, String year) {
          matchData.forEach(map -> {
