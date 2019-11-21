@@ -1,4 +1,4 @@
-package com.company;ls
+package com.company;
 
 public class enumConstants {
     public enum Status {
