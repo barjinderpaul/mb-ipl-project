@@ -1,10 +1,11 @@
-package com.company;
+package com.company;ls
 
 public class enumConstants {
     public enum Status {
 
-        MATCH_FILE("matches.csv"),DELIVERIES_FILE("deliveries.csv"),SPLITTER(","),
-        EXTRA_RUNS_YEAR("2015"),ECONOMIC_BOWLER_YEAR("2016"),
+        MATCH_FILE("matches.csv"), DELIVERIES_FILE("deliveries.csv"), SPLITTER(","),
+        EXTRA_RUNS_YEAR("2016"), ECONOMIC_BOWLER_YEAR("2015"),
+        NUMBER_OF_BOWLERS("5"),
         QUESTION1("Number of matches played per year of all the years in IPL."),
         QUESTION2("Number of matches won of all teams over all the years of IPL."),
         QUESTION3("For the year 2016 get the extra runs conceded per team."),
@@ -13,16 +14,16 @@ public class enumConstants {
         private String statusValue;
 
 
-        private Status (String statusValue) {
-            this. statusValue = statusValue;
+        private Status(String statusValue) {
+            this.statusValue = statusValue;
         }
 
-        String value (){
+        String value() {
             return this.statusValue;
         }
 
         @Override
-        public String toString(){
+        public String toString() {
             return statusValue;
         }
 

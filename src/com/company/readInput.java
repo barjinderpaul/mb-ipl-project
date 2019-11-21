@@ -11,28 +11,28 @@ import static com.company.enumConstants.Status.*;
 
 public class readInput {
 
-    private ArrayList<HashMap<String,String>> matchData = new ArrayList<HashMap<String,String>>();
-    private ArrayList<HashMap<String,String>> deliveriesData = new ArrayList<HashMap<String, String>>();
+    private ArrayList<HashMap<String, String>> matchData = new ArrayList<HashMap<String, String>>();
+    private ArrayList<HashMap<String, String>> deliveriesData = new ArrayList<HashMap<String, String>>();
 
     private ArrayList<String> headers = new ArrayList<String>();
     private ArrayList<String> headersDeliveries = new ArrayList<String>();
 
     //Constants;
-    private final String matchFile =  MATCH_FILE.value();
+    private final String matchFile = MATCH_FILE.value();
     private final String deliveriesFile = DELIVERIES_FILE.value();
     private final String splitter = SPLITTER.value();
 
 
-    public readInput(){
+    public readInput() {
         readCSV();
     }
 
 
-    public ArrayList<HashMap<String,String>> getMatchData(){
+    public ArrayList<HashMap<String, String>> getMatchData() {
         return matchData;
     }
 
-    public ArrayList<HashMap<String,String>> getDeliveriesData(){
+    public ArrayList<HashMap<String, String>> getDeliveriesData() {
         return deliveriesData;
     }
 
@@ -49,8 +49,8 @@ public class readInput {
             while ((line = br.readLine()) != null) {
                 String[] currentLine = line.split(splitter);
                 HashMap<String, String> nested = new HashMap<String, String>();
-                for(int i=0;i<currentLine.length;++i){
-                    nested.put(headers.get(i),currentLine[i]);
+                for (int i = 0; i < currentLine.length; ++i) {
+                    nested.put(headers.get(i), currentLine[i]);
                 }
                 matchData.add(nested);
             }
@@ -71,8 +71,8 @@ public class readInput {
                 String[] currentLine = line.split(splitter);
 
                 HashMap<String, String> nested = new HashMap<String, String>();
-                for(int i=0;i<currentLine.length;++i){
-                    nested.put(headersDeliveries.get(i),currentLine[i]);
+                for (int i = 0; i < currentLine.length; ++i) {
+                    nested.put(headersDeliveries.get(i), currentLine[i]);
                 }
                 deliveriesData.add(nested);
 
