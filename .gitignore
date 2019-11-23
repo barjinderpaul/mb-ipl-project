@@ -28,7 +28,6 @@
 *.sbr
 *.sdf
 *.pyc
-*.xml
 *.class
 ipch/
 obj/

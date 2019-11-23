@@ -12,61 +12,50 @@ public class ReadInput {
     private List<Match> matchData = new ArrayList<>();
     private List<Delivery> deliveryData = new ArrayList<>();
 
-    public ReadInput() {
-        readCSV();
-    }
-
-    public void readCSV(){
+    private List<String[]> readLines(String fileName) {
+        List<String[]> lines = new ArrayList<>();
         String line = "";
-        //reaeding matchesFile
-        try (BufferedReader br = new BufferedReader(new FileReader(MATCH_FILE))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             // Ignoring headers
             line = br.readLine();
-
             while ((line = br.readLine()) != null) {
                 String[] currentLine = line.split(SPLITTER);
-                Match match = new Match();
-                match.setId(Integer.parseInt(currentLine[ID_COLUMN]));
-                match.setSeason(currentLine[SEASON_COLUMN]);
-                match.setWinner(currentLine[WINNER_COLUMN]);
-                matchData.add(match);
+                lines.add(currentLine);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        line = "";
-        //reading deliveries file
-        try (BufferedReader br = new BufferedReader(new FileReader(DELIVERIES_FILE))) {
-            //ignoring headers
-            line = br.readLine();
-            while ((line = br.readLine()) != null) {
-                String[] currentLine = line.split(SPLITTER);
-                Delivery delivery = new Delivery();
-
-                delivery.setBowler(currentLine[BOWLER_COLUMN]);
-                delivery.setBowlingTeam(currentLine[BOWLING_TEAM_COLUMN]);
-                delivery.setExtraRuns(Integer.parseInt(currentLine[EXTRA_RUNS_COLUMN]));
-                delivery.setTotalRuns(Integer.parseInt(currentLine[TOTAL_RUNS_COLUMN]));
-                delivery.setMatchId(Integer.parseInt(currentLine[ID_COLUMN_DELIVERY_FILE]));
-
-                deliveryData.add(delivery);
-
-            }
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        return lines;
     }
 
+
     public List<Match> getMatchData(){
+        List<String[]> matchFileLines = readLines(MATCH_FILE);
+        matchFileLines.forEach(currentLine-> {
+            Match match = new Match();
+
+            match.setId(Integer.parseInt(currentLine[ID_COLUMN]));
+            match.setSeason(currentLine[SEASON_COLUMN]);
+            match.setWinner(currentLine[WINNER_COLUMN]);
+
+            matchData.add(match);
+        });
         return matchData;
     }
 
     public List<Delivery> getDeliveryData() {
+        List<String[]> deliveryFileLines = readLines(DELIVERIES_FILE);
+        deliveryFileLines.forEach(currentLine -> {
+            Delivery delivery = new Delivery();
+
+            delivery.setBowler(currentLine[BOWLER_COLUMN]);
+            delivery.setBowlingTeam(currentLine[BOWLING_TEAM_COLUMN]);
+            delivery.setExtraRuns(Integer.parseInt(currentLine[EXTRA_RUNS_COLUMN]));
+            delivery.setTotalRuns(Integer.parseInt(currentLine[TOTAL_RUNS_COLUMN]));
+            delivery.setMatchId(Integer.parseInt(currentLine[ID_COLUMN_DELIVERY_FILE]));
+
+            deliveryData.add(delivery);
+        });
         return deliveryData;
     }
 }
