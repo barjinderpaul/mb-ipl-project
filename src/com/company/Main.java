@@ -28,21 +28,21 @@ public class Main {
         Map<String, Double> economicBowlers = solved.economicBowlers(matchData, deliveryData);
 
         // Final output
-        Map<String, Map<String, ?>> finalOut = new LinkedHashMap<String, Map<String, ?>>();
-        finalOut.put(QUESTION1, matchesPlayedPerSeason);
-        finalOut.put(QUESTION2, matchesWon);
-        finalOut.put(QUESTION3, extraRuns);
-        finalOut.put(QUESTION4, economicBowlers);
+        Map<String, Map<String, ?>> finalOutput = new LinkedHashMap<String, Map<String, ?>>();
+        finalOutput.put(QUESTION1, matchesPlayedPerSeason);
+        finalOutput.put(QUESTION2, matchesWon);
+        finalOutput.put(QUESTION3, extraRuns);
+        finalOutput.put(QUESTION4, economicBowlers);
 
-        Iterator<Map.Entry<String, Map<String, ?>>> itr2 = finalOut.entrySet().iterator();
+        Iterator<Map.Entry<String, Map<String, ?>>> mapIterator = finalOutput.entrySet().iterator();
 
-        while (itr2.hasNext()) {
-            Map.Entry<String, Map<String, ?>> entry = itr2.next();
+        while (mapIterator.hasNext()) {
+            Map.Entry<String, Map<String, ?>> entry = mapIterator.next();
             String question = entry.getKey();
             Map<String, ?> answer = entry.getValue();
             System.out.println(" >  " + question + " : ");
-            for (Map.Entry<String, ?> entry1 : answer.entrySet()) {
-                System.out.println("\t" + entry1.getKey() + " " + entry1.getValue());
+            for (Map.Entry<String, ?> nestedEntry : answer.entrySet()) {
+                System.out.println("\t" + nestedEntry.getKey() + " " + nestedEntry.getValue());
             }
             System.out.println();
         }
